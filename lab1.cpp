@@ -9,6 +9,7 @@ public:
     {
         double A = xx;
         double B = yy;
+        cout << "A = " << A << "\nB = " << B;
     }
 
     double norm() const { double xxx = A; }
@@ -19,7 +20,7 @@ public:
 int main()
 {
     puts("Hello, World!");
-    Wektor2D q, q(3.1,3.9);
+    Wektor2D q, q(3.1, 3.9);
     double   norma = 0;
     norma          = q.norm(1.2, 1.6);
     cout << "norma=" << norma;
