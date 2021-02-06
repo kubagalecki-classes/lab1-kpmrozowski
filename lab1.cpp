@@ -5,27 +5,38 @@ using namespace std;
 class Wektor2D
 {
 public:
-    double A = 0;
-    double B = 0;
-    Wektor2D(){};
-    Wektor2D(double xx, double yy)
+    Wektor2D() : x{0}, y{0} {}
+    Wektor2D(double _x, double _y) : x{_x}, y{_y} {}
+    void     setX(double _x) { x = _x; }
+    void     setY(double _y) { y = _y; }
+    Wektor2D operator+(Wektor2D& obj)
     {
-        A       = xx;
-        this->A = xx;
-        B       = yy;
-        this->B = yy;
-        cout << "x = " << A << "\ny = " << B;
+        Wektor2D sum;
+        sum.x = this->x + obj.x;
+        sum.y = this->y + obj.y;
+        return sum;
     }
-    ~Wektor2D() { cout << "\nx = " << this->A << "\ny = " << this->B; }
-    double norm(double x, double y) const { return pow(pow(x, 2) + pow(y, 2), 0.5); }
+    double operator*(Wektor2D obj) { return this->x * obj.x + this->y * obj.y; }
+    double getX() { return x; }
+    double getY() { return y; }
+    double x, y;
 };
 
 int main()
 {
-    puts("Hello, World!");
-    Wektor2D q0, q1(3.1, 3.9);
-    double   norma = 0;
-    norma          = q0.norm(1.2, 1.6);
-    cout << "\nnorma=" << norma;
+    Wektor2D v1{};         // Konstruktor domyślny, wektor o wsp. [0, 0]
+    v1.setX(2.);           // setter
+    v1.setY(1.);           // setter
+    double x1 = v1.getX(); // getter
+    double y1 = v1.getY(); // getter
+
+    Wektor2D v2{2., 2.}; // Konstruktor nadający współrzędne
+
+    Wektor2D sum = v1 + v2; // dodawanie wektorów
+
+    double prod = v1 * v2; // iloczyn skalarny
+    cout << "sum = [" << sum.x << ", " << sum.y << "]\n";
+    cout << "prod = " << prod << "\n";
+
     return 0;
 }
