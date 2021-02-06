@@ -9,7 +9,7 @@ class Wektor2D
 	void setY(double _y){
 		y = _y;
 	}
-	Wektor2D& operator+(Wektor2D obj){
+	Wektor2D operator+(Wektor2D obj){
 		Wektor2D sum;
 		sum.x = this->x + obj.x;
 		sum.y = this->y + obj.y;
